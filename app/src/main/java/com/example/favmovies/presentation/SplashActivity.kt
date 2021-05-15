@@ -1,4 +1,4 @@
-package com.example.favmovies
+package com.example.favmovies.presentation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.animation.Animation
+import com.example.favmovies.R
 import com.example.favmovies.databinding.ActivitySplashBinding
+import com.example.favmovies.presentation.view.MainActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
