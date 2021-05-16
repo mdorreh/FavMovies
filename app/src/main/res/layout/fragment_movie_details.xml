@@ -366,5 +366,17 @@
                 android:textStyle="bold"
                 tools:text="Movie Title" />
         </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/add_to_fav"
+            android:layout_margin="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_production_li"
+            android:background="@color/primaryDarkColor"
+            android:text="@string/add_to_favorite"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

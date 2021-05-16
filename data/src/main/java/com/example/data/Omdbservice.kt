@@ -1,5 +1,8 @@
 package com.example.data.network
 
+import android.content.Context
+import com.example.data.db.DatabaseService
+import com.example.data.db.MovieEntity
 import com.example.domain.model.Movie
 import com.example.domain.repository.MovieDataSource
 import com.example.domain.util.Result
@@ -8,7 +11,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class OmdbService @Inject constructor(private val omdbApi: OmdbApi) : MovieDataSource {
+class OmdbService @Inject constructor(private val omdbApi: OmdbApi, context: Context) : MovieDataSource {
+
+    private val movieDao = DatabaseService.getInstance(context).movieDao()
 
     override suspend fun getMovies(): Result<List<Movie>, Unit> {
         return withContext(Dispatchers.IO) {
@@ -66,5 +71,11 @@ class OmdbService @Inject constructor(private val omdbApi: OmdbApi) : MovieDataS
                 }
             }
         }
+    }
+
+    override suspend fun addMovie(movie: Movie) = movieDao.addMovieEntity(MovieEntity.fromMovie(movie))
+
+    override suspend fun getAllMovies(): List<Movie> = movieDao.getAllMovieEntity().map {
+        it.toMovie()
     }
 }

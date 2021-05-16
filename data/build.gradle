@@ -36,6 +36,7 @@ android {
 
 def retrofitVersion = '2.9.0'
 def daggerVersion = '2.35.1'
+def roomVersion ='2.3.0'
 
 dependencies {
     implementation project(':domain')
@@ -54,6 +55,13 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$daggerVersion"
     kapt "com.google.dagger:hilt-compiler:$daggerVersion"
     kapt "com.google.dagger:hilt-android-compiler:$daggerVersion"
+
+    //room
+    implementation "androidx.room:room-runtime:$roomVersion"
+//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

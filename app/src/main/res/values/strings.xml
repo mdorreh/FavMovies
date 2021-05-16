@@ -19,4 +19,6 @@
     <string name="title">title</string>
     <string name="enter_the_year_of_the_movie">Enter the year of the movie</string>
     <string name="search">Search</string>
+    <string name="favorite">Favorite</string>
+    <string name="add_to_favorite">Add to favorite</string>
 </resources>
