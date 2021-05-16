@@ -3,6 +3,8 @@ package com.example.favmovies.di
 import com.example.data.network.OmdbApi
 import com.example.data.network.OmdbService
 import com.example.domain.repository.MovieRepository
+import com.example.domain.usecase.GetMovieByTitleUseCase
+import com.example.domain.usecase.GetMovieDetailsUseCase
 import com.example.domain.usecase.GetMovies
 import com.example.favmovies.presentation.viewmodel.HomeViewModel
 import dagger.Module
@@ -20,6 +22,16 @@ object AppModule {
 
     @Provides
     fun provideGetMoviesUseCase(movieRepository: MovieRepository) = GetMovies(
+        movieRepository
+    )
+
+    @Provides
+    fun provideGetMovieDetailsUseCase(movieRepository: MovieRepository) = GetMovieDetailsUseCase(
+        movieRepository
+    )
+
+    @Provides
+    fun provideGetMovieByTitleUseCase(movieRepository: MovieRepository) = GetMovieByTitleUseCase(
         movieRepository
     )
 

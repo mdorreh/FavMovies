@@ -4,5 +4,7 @@ import com.example.domain.model.Movie
 import com.example.domain.util.Result
 
 interface MovieDataSource {
-    suspend fun getMovies():Result<List<Movie>,Unit>
+    suspend fun getMovies(): Result<List<Movie>, Unit>
+    suspend fun getMovieDetails(imdbId: String?): Result<Movie, Unit>
+    suspend fun getMovieByTitle(title: String?="", year: String?=""): Result<Movie, Unit>
 }

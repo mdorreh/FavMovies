@@ -28,4 +28,43 @@ class OmdbService @Inject constructor(private val omdbApi: OmdbApi) : MovieDataS
             }
         }
     }
+
+    override suspend fun getMovieDetails(imdbId: String?): Result<Movie, Unit> {
+        return withContext(Dispatchers.IO) {
+            try {
+                val response = omdbApi.getMovieDetails(imdbId)
+
+                if (response.isSuccessful && response.body() != null) {
+                    return@withContext Result.Success(response.body()!!)
+                } else {
+                    return@withContext Result.Failure(Unit)
+                }
+            } catch (t: Throwable) {
+                if (t !is CancellationException) {
+                    return@withContext Result.Failure(Unit)
+                } else {
+                    throw t
+                }
+            }
+        }
+    }
+
+    override suspend fun getMovieByTitle(title: String?, year: String?): Result<Movie, Unit> {
+        return withContext(Dispatchers.IO) {
+            try {
+                val response = omdbApi.getMovieByTitle(title, year)
+                if (response.isSuccessful && response.body() != null) {
+                    return@withContext Result.Success(response.body()!!)
+                } else {
+                    return@withContext Result.Failure(Unit)
+                }
+            } catch (t: Throwable) {
+                if (t !is CancellationException) {
+                    return@withContext Result.Failure(Unit)
+                } else {
+                    throw t
+                }
+            }
+        }
+    }
 }

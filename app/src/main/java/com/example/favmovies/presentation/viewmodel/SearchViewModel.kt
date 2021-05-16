@@ -1,8 +1,10 @@
 package com.example.favmovies.presentation.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.domain.model.Movie
+import com.example.domain.usecase.GetMovieByTitleUseCase
 import com.example.domain.usecase.GetMovies
 import com.example.domain.util.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,16 +14,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val getMovies: GetMovies) : ViewModel() {
+class SearchViewModel @Inject constructor(private val getMovieByTitleUseCase: GetMovieByTitleUseCase) : ViewModel() {
 
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
-    val movies = MutableLiveData<List<Movie>>()
+    val movie = MutableLiveData<Movie>()
 
-    fun getMovies() {
+    fun getMovieByTitle(title:String?,year:String?) {
         coroutineScope.launch {
-            val result = getMovies.invoke()
+            val result = getMovieByTitleUseCase.invoke(title,year)
             if (result is Result.Success) {
-                result.a.also { movies.postValue(it) }
+                result.a.also { movie.postValue(it) }
             } else {
                 throw RuntimeException("fetch failed")
             }

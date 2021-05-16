@@ -4,4 +4,19 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="favmovies">FavMovies</string>
+    <string name="an_error_occured">There is an error in communicating with server</string>
+    <string name="year">year</string>
+    <string name="genre">Genre</string>
+    <string name="rated">Rated</string>
+    <string name="runttime">Runttime</string>
+    <string name="director">director</string>
+    <string name="actors">Actors</string>
+    <string name="awards">Awards</string>
+    <string name="imdbrating">ImdbRating</string>
+    <string name="boxoffice">BoxOffice</string>
+    <string name="production">Production</string>
+    <string name="enter_the_movie_you_want_to_search">Enter the movie you want to search</string>
+    <string name="title">title</string>
+    <string name="enter_the_year_of_the_movie">Enter the year of the movie</string>
+    <string name="search">Search</string>
 </resources>

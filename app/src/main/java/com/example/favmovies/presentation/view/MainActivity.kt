@@ -1,6 +1,7 @@
 package com.example.favmovies.presentation.view
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -35,4 +36,20 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
+    fun hideBottomNavigationView() {
+        binding.navView.clearAnimation()
+        binding.navView.animate().translationY(binding.navView.height.toFloat()).duration = 300
+        binding.navView.visibility = View.GONE
+    }
+
+    /**
+     * A function to show the BottomNavigationView with Animation.
+     */
+    fun showBottomNavigationView() {
+        binding.navView.clearAnimation()
+        binding.navView.animate().translationY(0f).duration = 300
+        binding.navView.visibility = View.VISIBLE
+    }
+
 }
