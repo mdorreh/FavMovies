@@ -10,7 +10,7 @@ The project contains three moduls including app module, data module and domain m
 - Room library <br/>
 - Android Architecture components <br/> 
 
-I am going to add junit and use workmanager to it.
+I am going to add junit and use workmanager in it.
 
 ## Demo
 <img src="movie.gif" width="300" height="500" />
